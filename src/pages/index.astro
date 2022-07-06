@@ -1,9 +1,20 @@
 ---
 import Base from '../layout/Base.astro'
+import { Markdown } from 'astro/components'
 ---
 
 <Base title="Hello">
-	<h1>Hello World 12345</h1>
+	<h1>Hello World Yay!</h1>
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eaque soluta optio impedit dolore hic, exercitationem, illum quasi quas corrupti repellendus, dicta voluptas labore cupiditate placeat quis atque distinctio modi?</p>
+
+	<Markdown>
+		## Write some markdown here
+
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eaque soluta optio impedit dolore hic, exercitationem, illum quasi quas corrupti repellendus, dicta voluptas labore cupiditate placeat quis atque distinctio modi?
+
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eaque soluta optio impedit dolore hic, exercitationem, illum quasi quas corrupti repellendus, dicta voluptas labore cupiditate placeat quis atque distinctio modi?
+
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eaque soluta optio impedit dolore hic, exercitationem, illum quasi quas corrupti repellendus, dicta voluptas labore cupiditate placeat quis atque distinctio modi?
+	</Markdown>
 </Base>
