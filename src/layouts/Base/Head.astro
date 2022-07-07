@@ -1,11 +1,15 @@
 ---
-const { title, description } = Astro.props
+const { title, description, imageURL } = Astro.props
 const defaultDescription = 'This is a demo site for Astro.'
 
 const pageTitle = title + ' | ' + 'Astro Demo'
 const pageDescription = description || defaultDescription
 const canonicalURL = Astro.canonicalURL.href
 console.log(Astro.canonicalURL)
+
+const OGImageURL = imageURL
+  ? `${Astro.canonicalURL.origin}/images/${imageURL}`
+  : `${Astro.canonicalURL.origin}/images/fallback.jpg`
 ---
 
 <meta charset="UTF-8">
@@ -18,3 +22,17 @@ console.log(Astro.canonicalURL)
 <!-- The page will either show a description for the page if present, or the default description at defined at the top. -->
 <meta name="description" content={pageDescription}>
 <link rel="canonical" href={Astro.canonicalURL.href} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.canonicalURL.href} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:image" content={OGImageURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.canonicalURL.href} />
+<meta property="twitter:title" content={pageTitle} />
+<meta property="twitter:description" content={pageDescription} />
+<meta property="twitter:image" content={OGImageURL} />
