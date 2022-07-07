@@ -1,0 +1,14 @@
+
+p { 
+    max-width: 35em;
+    color: blue; 
+}
+
+li a { 
+    padding: 0 10px; 
+}
+
+img {
+    max-width: 100%;
+}
+
