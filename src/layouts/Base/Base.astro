@@ -1,23 +1,18 @@
 ---
 // import '../scss/styles.scss'
 import '../../css/styles.css'
-console.log(Astro.props)
-const { title, description } = Astro.props
+import Head from './Head.astro'
+const props = Astro.props
+// console.log(Astro.props)
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{title}</title>
-
+    <Head {...props} />
 </head>
 
-<body>
-    {description}
-    
+<body> 
     <header class="site-header">
         <nav>
             <ul>
