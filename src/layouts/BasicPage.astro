@@ -1,9 +1,9 @@
 ---
-import Base from './Base.astro'
+import Base from './Base/Base.astro'
 const { title } = Astro.props.content
 ---
 
-<Base title={title}>
+<Base {title}>
 
     <div class="wrap">
         <h1>{title}</h1>
