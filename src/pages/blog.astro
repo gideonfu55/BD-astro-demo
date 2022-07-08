@@ -1,11 +1,20 @@
 ---
 import Base from '../layouts/Base/Base.astro'
+// This allows you to search for all your blog posts on this page
+const posts = await Astro.glob('./blog/*')
+console.log(posts[0].frontmatter)
 ---
 
 <Base title="Blog">
 	<h1>Blog</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eaque soluta optio impedit dolore hic, exercitationem, illum quasi quas corrupti repellendus, dicta voluptas labore cupiditate placeat quis atque distinctio modi?</p>
+    {posts.map(post => (
+        <article>
+            <h2>
+                <a href={post.url}> {post.frontmatter.title} </a>
+            </h2>
+        </article>
+    ))}
 
-    <a href="/blog/first-post">First Post</a><br>
-    <a href="/blog/first-post">Second Post</a>
+    <!-- <a href="/blog/first-post">First Post</a><br>
+    <a href="/blog/first-post">Second Post</a> -->
 </Base>

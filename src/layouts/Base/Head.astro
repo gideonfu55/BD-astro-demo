@@ -5,7 +5,7 @@ const defaultDescription = 'This is a demo site for Astro.'
 const pageTitle = title + ' | ' + 'Astro Demo'
 const pageDescription = description || defaultDescription
 const canonicalURL = Astro.canonicalURL.href
-console.log(Astro.canonicalURL)
+console.log(canonicalURL)
 
 const OGImageURL = imageURL
   ? `${Astro.canonicalURL.origin}/images/${imageURL}`
