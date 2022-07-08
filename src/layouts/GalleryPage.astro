@@ -7,16 +7,22 @@ let imageURLs = images.map(image => {
 })
 ---
 
+<style>
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+    }
+</style>
+
 <Base {...props}>
     <div class="wrap">
         <h1>{title}</h1>
 
         <div class="grid">
-            <div class="grid-item">
-                {imageURLs.map(url => (
-                <img src={url} alt="" />
-                ))}
-            </div>
+            {imageURLs.map(url => (
+            <img src={url} alt="" />
+            ))}
         </div>
 
     </div>
