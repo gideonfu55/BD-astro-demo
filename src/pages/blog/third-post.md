@@ -1,9 +1,9 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: Second Post
-description: This is my second post.
+title: Third Post
+description: This is my third post. It gets repetitive, sorry.
 # Format: YYYY-MM-DD
-date: 2022-07-07
+date: 2022-07-08
 ---
 
 {frontmatter.description}

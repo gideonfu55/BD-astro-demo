@@ -2,7 +2,9 @@
 import Base from '../layouts/Base/Base.astro'
 // This allows you to search for all your blog posts on this page
 const posts = await Astro.glob('./blog/*')
-console.log(posts[0].frontmatter)
+// console.log(posts[0].frontmatter)
+
+const sorted = posts.sort()
 ---
 
 <Base title="Blog">
