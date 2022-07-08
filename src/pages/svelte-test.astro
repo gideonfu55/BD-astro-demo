@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base/Base.astro'
+import Counter from '../Components/Counter.svelte'
+---
+
+<Base title="Svelte-Test">
+    <!-- The client load is essential for getting the svelte component to load! -->
+    <Counter client:load/>
+</Base>
