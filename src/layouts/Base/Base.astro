@@ -2,6 +2,7 @@
 // import '../scss/styles.scss'
 import '../../css/styles.css'
 import Head from './Head.astro'
+import Nav from '../../Components/Nav.astro';
 const props = Astro.props
 // console.log(Astro.props)
 ---
@@ -14,18 +15,7 @@ const props = Astro.props
 
 <body> 
     <header class="site-header">
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                    <a href="/basic">Basic</a>
-                    <a href="/blog">Blog</a>
-                    <a href="/gallery">Gallery</a>
-                </li>
-            </ul>
-        </nav>
+        <Nav />
     </header>
 
     <slot>This is the default message</slot>

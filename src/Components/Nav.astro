@@ -1,0 +1,48 @@
+---
+const pagePath = Astro.canonicalURL.pathname
+console.log(pagePath)
+
+let navItems = [
+    { contents: 'Home', href: '/', isActive: false },
+    { contents: 'About', href: '/about/', isActive: false },
+    { contents: 'Contact', href: '/contact/', isActive: false },
+    { contents: 'Basic', href: '/basic/', isActive: false },
+    { contents: 'Blog', href: '/blog/', isActive: false },
+    { contents: 'Gallery', href: '/gallery/', isActive: false }
+]
+
+navItems = navItems.map(item => {
+    if (item.href === '/') {
+        if (pagePath === item.href) {
+            item.isActive = true
+        }
+        
+        return item
+    }
+
+    if (item.href !== '/') {
+        if(pagePath.includes(item.href)) {
+            item.isActive = true
+        }
+    }
+
+    return item
+})
+---
+
+<nav>
+    <ul>
+        {navItems.map(item => (
+            <li>
+                <a class={item.isActive ? 'active' : ''} href={item.href}>{item.contents}</a>
+            </li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+    a.active {
+        background-color: green;
+        border-radius: 2px;
+    }
+</style>

@@ -1,18 +1,32 @@
 ---
+import dateFns from 'date-fns'
 import Base from '../layouts/Base/Base.astro'
 // This allows you to search for all your blog posts on this page
 const posts = await Astro.glob('./blog/*')
 // console.log(posts[0].frontmatter)
 
-const sorted = posts.sort()
+// Create a function to sort the order of posts according to date (from the latest to earliest):
+const sorted = posts.sort((a, b) => {
+    const aDate = new Date(a.frontmatter.date)
+    const bDate = new Date(b.frontmatter.date)
+
+    return bDate.getTime() - aDate.getTime()
+})
+
+// Create function for Date format presented to be readable on page:
+function readableDate(date) {
+    return dateFns.format(date, 'MMM do, yyyy')
+}
 ---
 
 <Base title="Blog">
 	<h1>Blog</h1>
+
     <!-- This is how this page 'gets' its content from your blog folder and blog post content: -->
-    {posts.map(post => (
+    {sorted.map(post => (
         <article>
             <h2>
+                {readableDate(new Date(post.frontmatter.date))}
                 <a href={post.url}> {post.frontmatter.title} </a>
             </h2>
         </article>
