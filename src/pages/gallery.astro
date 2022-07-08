@@ -1,0 +1,21 @@
+---
+import Gallery from '../layouts/GalleryPage.astro'
+const title = 'Gallery Page'
+const images = [
+    'chinese4dish1.jpeg',
+    'chinese4dish1.jpeg',
+    'chinese4dish1.jpeg',
+    'chinese4dish1.jpeg',
+    'chinese4dish1.jpeg'
+]
+---
+
+<style>
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+    }
+</style>
+
+<Gallery {title} {images}></Gallery>
