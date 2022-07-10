@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@astrojs/svelte": "^0.2.0",
+    "@portabletext/svelte": "^1.0.1",
     "@portabletext/to-html": "^1.0.3",
     "@sanity/client": "^3.3.2",
     "astro": "^0.26.1",
