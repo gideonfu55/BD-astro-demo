@@ -11,7 +11,7 @@ console.log(posts)
     <ul>
         {posts.map(post => (
             <li>
-                <a href={post.slug}>{post.title}</a>
+                <a href={post.slug.current}>{post.title}</a>
             </li>
         ))}
     </ul>

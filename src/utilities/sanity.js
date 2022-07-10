@@ -1,4 +1,5 @@
 import sanityClient from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 // const sanityClient = require('@sanity/client')
 const client = sanityClient({
@@ -9,8 +10,14 @@ const client = sanityClient({
 // token: 'sanity-auth-token', // or leave blank for unauthenticated usage
 })
 
+const imageBuilder = imageUrlBuilder(client)
+
 export function fetch(query, param = {}) {
     return client.fetch(query, param)
+}
+
+export function getImageUrl(source) {
+  return imageBuilder.image(source).url()
 }
 
 // const query = '*[_type == "bike" && seats >= $minSeats] {name, seats}'

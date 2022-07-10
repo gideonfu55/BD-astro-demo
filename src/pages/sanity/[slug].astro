@@ -1,13 +1,15 @@
 ---
-import {fetch} from '../../utilities/sanity'
-export async function getStaticPaths() {
+import {toHTML} from '@portabletext/to-html'
+import {fetch, getImageUrl} from '../../utilities/sanity'
+import Base from '../../layouts/Base/Base.astro'
 
+export async function getStaticPaths() {
     const query = '*[_type == "blogPost"]'
     const posts = await fetch(query)
 
     const paths = posts.map(post => {
         return {
-            params: {slug: post.slug},
+            params: { slug: post.slug.current },
             props: {post}
         }
     })
@@ -18,14 +20,31 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { post } = Astro.props
 
-console.log(slug)
-console.log(post)
+const portableBlockComponents = {
+    types: {
+        figure ({value}) {
+            const url = getImageUrl(value.image.asset._ref)
+            return `<figure>
+                <img src="${url}" alt="${value.alt}">
+                <figcaption>${value.caption}</figcaption>
+            </figure>`
+        }
+    }
+}
+
+const body = toHTML(post.body, {components: portableBlockComponents})
+
+// console.log(postBody)
+// console.log(slug)
+// console.log(post)
 ---
 
 <!-- Your HTML template here. -->
 
-<h1>{post.title}</h1>
-<p>{post.slug}</p>
-<p>{post.body}</p>
+<Base>
+    <h1>{post.title}</h1>
+    <p>{post.slug.current}</p>
+    <Fragment set:html={body}></Fragment>
 
-<a href="/sanity/">Back to Sanity Blog Page</a>
+    <a href="/sanity/">Back to Sanity Blog Page</a>
+</Base>
