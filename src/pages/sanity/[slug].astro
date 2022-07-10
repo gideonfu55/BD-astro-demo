@@ -1,0 +1,30 @@
+---
+import {fetch} from '../../utilities/sanity'
+export async function getStaticPaths() {
+
+    const query = '*[_type == "blogPost"]'
+    const posts = await fetch(query)
+
+    const paths = posts.map(post => {
+        return {
+            params: {slug: post.slug},
+            props: {post}
+        }
+    })
+
+    return paths
+}
+
+const { slug } = Astro.params
+const { post } = Astro.props
+
+console.log(slug)
+console.log(post)
+---
+
+<!-- Your HTML template here. -->
+
+<h1>{post.title}</h1>
+<p>{post.slug}</p>
+
+<a href="/sanity/">Back to Sanity Blog Page</a>

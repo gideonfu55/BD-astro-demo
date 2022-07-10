@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base/Base.astro'
+import {fetch} from '../../utilities/sanity'
+const query = '*[_type == "blogPost"]'
+const posts = await fetch(query)
+console.log(posts)
+---
+
+<Base title="Sanity Posts">
+    <h1>Posts from Sanity</h1>
+    <ul>
+        {posts.map(post => (
+            <li>
+                <a href={post.slug}>{post.title}</a>
+            </li>
+        ))}
+    </ul>
+</Base>

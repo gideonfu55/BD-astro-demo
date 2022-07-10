@@ -4,14 +4,14 @@ p {
     color: blue;
 }
 
-ul {
+nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-li a { 
+nav li a { 
     padding: 0 10px;
     text-decoration: none;
     color: black;
