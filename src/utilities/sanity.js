@@ -19,5 +19,3 @@ export function fetch(query, param = {}) {
 export function getImageUrl(source) {
   return imageBuilder.image(source).url()
 }
-
-// const query = '*[_type == "bike" && seats >= $minSeats] {name, seats}'
