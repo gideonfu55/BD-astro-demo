@@ -1,7 +1,7 @@
 ---
-import {toHTML} from '@portabletext/to-html'
 import {fetch, getImageUrl} from '../../utilities/sanity'
 import Base from '../../layouts/Base/Base.astro'
+import PortableText from '../../Components/PortableText.svelte'
 
 export async function getStaticPaths() {
     const query = '*[_type == "blogPost"]'
@@ -20,19 +20,17 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { post } = Astro.props
 
-const portableBlockComponents = {
-    types: {
-        figure ({value}) {
-            const url = getImageUrl(value.image.asset._ref)
-            return `<figure>
-                <img src="${url}" alt="${value.alt}">
-                <figcaption>${value.caption}</figcaption>
-            </figure>`
-        }
-    }
-}
-
-const body = toHTML(post.body, {components: portableBlockComponents})
+// const portableBlockComponents = {
+//     types: {
+//         figure ({value}) {
+//             const url = getImageUrl(value.image.asset._ref)
+//             return `<figure>
+//                 <img src="${url}" alt="${value.alt}">
+//                 <figcaption>${value.caption}</figcaption>
+//             </figure>`
+//         }
+//     }
+// }
 
 // console.log(postBody)
 // console.log(slug)
@@ -44,7 +42,8 @@ const body = toHTML(post.body, {components: portableBlockComponents})
 <Base>
     <h1>{post.title}</h1>
     <p>{post.slug.current}</p>
-    <Fragment set:html={body}></Fragment>
+    
+    <PortableText value = {post.body}></PortableText>
 
     <a href="/sanity/">Back to Sanity Blog Page</a>
 </Base>
